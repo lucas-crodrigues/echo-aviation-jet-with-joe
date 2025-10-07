@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+import CTAColor from "../components/CTAColor.astro";
+import flyWithUsCTA from "../data/CTAFlight";
+import ImageComp from "../components/ImageComp.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const {
+  title,
+  author,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  category,
+  tags,
+} = Astro.props;
+---
+
+<BaseLayout siteTitle={title + " | Blog | Echo Aviation"}>
+  <div class="h-20 lg:h-32 w-full"></div>
+
+  <section
+    class="flex justify-center pt-2 bg-gradient-to-b from-primary-50 to-primary-100"
+  >
+    <article class="mx-auto max-w-4xl mb-16">
+      <div
+        class="mb-12 lg:mb-0 aspect-square lg:aspect-video lg:rounded-t-md shadow-md overflow-hidden"
+      >
+        {
+          heroImage && (
+            <ImageComp
+              imagePath={heroImage}
+              loading="eager"
+              styles="object-cover h-full w-full bg-white"
+            />
+          )
+        }
+      </div>
+      <div class="mx-auto max-w-4xl bg-white pt-12 pb-32 px-5">
+        <div class="title">
+          <div class="date">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+          <h1 class="text-5xl m-0 font-serif">{title}</h1>
+          <p class="text-sm font-light">
+            Published by: <strong class="font-bold ml-2">{author}</strong>
+          </p>
+          <div class="md:flex mt-2 gap-2 hidden">
+            <span
+              class="bg-primary-600 text-sm text-white inline-block px-3 py-1 rounded-md"
+            >
+              {category}
+            </span>
+            {
+              tags
+                .slice(0, 3)
+                .map((tag) => (
+                  <span
+                    class={`bg-primary-500 text-sm text-white inline-block px-3 py-1 rounded-md`}
+                  >
+                    {tag}
+                  </span>
+                ))
+            }
+          </div>
+          <hr />
+        </div>
+        <div class="mt-12 flex prose relative justify-center pb-4">
+          <slot />
+        </div>
+      </div>
+    </article>
+  </section>
+  <CTAColor content={flyWithUsCTA} />
+</BaseLayout>

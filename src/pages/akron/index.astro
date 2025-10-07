@@ -1,0 +1,82 @@
+---
+import IndexLayout from "../../layouts/IndexLayout.astro";
+import HomeHeader from "../../components/HomeHeader.astro";
+import FlightSchoolFeatures from "../../components/FlightSchoolFeatures.astro";
+import FlightTrainingSection from "../../components/FlightTrainingSection.astro";
+import YouTubeSection from "../../components/YouTubeSection.astro";
+import Welcome from "../../components/Welcome.astro";
+import FlightTrainingAdvantages from "../../components/FlightTrainingAdvantages.astro";
+import { GeneralFAQs } from "../../data/general-faqs";
+import FAQs from "../../components/FAQs";
+import FAQSchema from "../../components/FAQSchema.astro";
+import CTAFinancing from "../../components/CTAFinancing.astro";
+import financingCompData from "../../data/financingComp";
+import CTAColor from "../../components/CTAColor.astro";
+import CTAFlight from "../../data/CTAFlight.js";
+import ContactUs from "../../components/ContactUs.astro";
+import videos from "../../data/videos.js";
+import CTAPartners from "../../components/CTAPartners.astro";
+
+const siteTitle =
+  "Echo Aviation | Accelerated Flight Training in Akron with Independent CFIs";
+const headerData = {
+  imagePath:
+    "/src/assets/stock-echo-aviation-accelerated-affordable-independent-flight-training.jpg",
+  catch: ["Accelerated.", "Affordable.", "Independent."],
+  title: `Flight training in Akron, reimagined with Echo Aviation. Learn with independent CFIs offering accelerated, personalized training at transparent prices.`,
+  buttons: [
+    {
+      text: "Join a Session",
+      link: "/discovery-call",
+    },
+    {
+      text: "Start Flying!",
+      link: "/start-flying",
+    },
+  ],
+};
+const heroContent = {
+  title: "Accelerated Flight Training in Akron",
+  paragraphs: [
+    "Echo Aviation connects Akron-area students directly with independent Certified Flight Instructors — not a flight school. That means no overhead, no delays, and no rigid timelines. Just real instruction, one-on-one, built around your schedule.",
+    "This model gives you the flexibility to train locally in Akron while learning at your own pace. Your instructor works with just a few students at a time, so you get the focus and availability you need to move fast.",
+    "Whether you're just starting out or looking to finish what you began elsewhere, Echo makes flight training in Akron simple, personal, and efficient — without the bureaucracy of traditional schools.",
+  ],
+  imagePath: "/src/assets/stock-plane-flying-blue-skies.jpg",
+  buttons: [
+    {
+      text: "Join a Discovery Session",
+      link: "/discovery-call#contact",
+    },
+  ],
+};
+
+const videosData = videos.jetWithJoe;
+const videoSectionData = {
+  title: "Jet With Joe YouTube Channel",
+  description:
+    "Explore our latest flight training videos, tutorials, and student journeys.",
+};
+
+const ctaInfo = {
+  title: "Our Partners",
+  description: "",
+  style: "mx-auto px-6 flex flex-col items-center justify-center gap-12",
+  textStyle:
+    "text-3xl md:text-4xl lg:text-5xl font-bold text-center text-accent-500",
+};
+---
+
+<IndexLayout siteTitle={siteTitle} >
+  <HomeHeader data={headerData} />
+  <FlightSchoolFeatures />
+  <FlightTrainingSection />
+  <Welcome content={heroContent} />
+  <FlightTrainingAdvantages />
+  <CTAFinancing content={financingCompData} />
+  <CTAPartners data={ctaInfo} />
+  <YouTubeSection videos={videosData} videoSectionData={videoSectionData} />
+  <FAQs faqs={GeneralFAQs} type="General" client:visible />
+  <ContactUs />
+  <CTAColor content={CTAFlight} />
+</IndexLayout>

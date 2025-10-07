@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const { content } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif,webp}",
+);
+if (!images[content.imagePath]) {
+  throw new Error(
+    `"${content.imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`,
+  );
+}
+---
+
+<header
+  class="relative lg:mt-0 h-[75vh] text-accent-100 flex flex-col items-center justify-center overflow-hidden"
+>
+  <Image
+    alt=""
+    src={images[content.imagePath]()}
+    width={1920}
+    loading={"eager"}
+    class="absolute inset-0 -z-0 object-cover saturate-50 brightness-75 object-center w-full h-full animate-slow-zoom max-h-[1600px]"
+  />
+  <div class="absolute bg-cod-gray-900/30 w-full h-full z-0"></div>
+  <!-- Text -->
+  <div
+    class="text-accent-100 mt-20 lg:mt-0 text-center lg:text-left z-10 flex flex-col items-center gap-4 px-5 h-full lg:pt-28 justify-center"
+  >
+    <h1
+      class="text-5xl uppercase md:text-6xl lg:text-6xl max-w-6xl drop-shadow-2xl xl:text-7xl font-sans2 text-center font-bold tracking-wide"
+      set:html={content.headerH1}
+    />
+    <h2
+      class="text-sm lg:text-xl mt-3 font-medium text-center max-w-5xl drop-shadow-md"
+      set:html={content.paragraph}
+    />
+    <div
+      class="mt-6 flex flex-wrap justify-center align-middle items-center gap-6 z-10"
+    >
+      {
+        content.buttons &&
+          content.buttons.map((btn) => (
+            <a
+              href={btn.link}
+              target={`${btn.link.includes("http") ? "_blank" : "_self"}`}
+              class={`${btn.primary ? "btn-primary" : "btn-accent"} w-full md:w-auto`}
+            >
+              {btn.name}
+            </a>
+          ))
+      }
+    </div>
+  </div>
+</header>

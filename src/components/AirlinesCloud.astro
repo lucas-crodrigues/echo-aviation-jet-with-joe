@@ -1,0 +1,43 @@
+---
+import ImageComp from "./ImageComp.astro";
+
+const { data } = Astro.props;
+---
+
+<section class="p-5 bg-checkered bg-fixed">
+  <div class="bg-cod-gray-100 pt-24 pb-8 rounded-lg">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8">
+      <h3
+        class="text-4xl lg:text-6xl lg:max-w-5xl font-sans2 text-center font-bold tracking-tight text-sky-950"
+      >
+        Partnerships That Fuel Your Progress
+      </h3>
+      <h4
+        class="mx-auto mt-4 text-lg lg:text-2xl max-w-3xl text-center tracking-loose text-gray-900"
+      >
+        From financing to flight time building, these partners help us provide a
+        more complete training experience.
+      </h4>
+      <div
+        class="mx-auto mt-12 flex flex-wrap justify-center align-middle items-center gap-16"
+      >
+        {
+          data.map((airline) => (
+            <a href={airline.link} target="_blank">
+              <ImageComp
+                alt=""
+                imagePath={airline.imagePath}
+                styles="max-w-52 lg:max-w-48 h-20 object-contain object-bottom hover:scale-110 duration-500 ease-in-out"
+              />
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex justify-center mt-20">
+        <a href="/training-programs#top" class="btn-primary text-xl"
+          >Start Training</a
+        >
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import ImageComp from "../ImageComp.astro";
+
+const { title, firstStep, secondStep, thirdStep, fourthStep } = Astro.props;
+---
+
+<section class="text-gray-100">
+  <div class="flex flex-col md:flex-row h-full min-h-[32rem]">
+    <!-- Left Image (50% width, full height of the section) -->
+    <div class="relative w-full md:w-1/2 min-h-[32rem] md:min-h-0 md:h-auto">
+      <ImageComp
+        imagePath="/src/assets/stock-nima-sarram-5Kl7XTFzXmQ-unsplash.jpg"
+        styles="absolute inset-0 w-full h-full object-cover -z-10 overflow-hidden"
+      />
+    </div>
+
+    <!-- Right Text Content -->
+    <div class="w-full md:w-1/2 flex items-center py-20 px-6">
+      <div class="max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">{title}</h2>
+        <ol class="space-y-6 text-lg list-decimal list-inside">
+          <li>
+            {firstStep}
+          </li>
+          <li>
+            {secondStep}
+          </li>
+          <li>
+            {thirdStep}
+          </li>
+          <li>
+            {fourthStep}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

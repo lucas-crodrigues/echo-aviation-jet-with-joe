@@ -1,0 +1,17 @@
+---
+const { title, faqs } = Astro.props;
+---
+
+<section class="py-16 bg-gray-50 text-gray-800">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <h2 class="text-3xl font-bold mb-8 text-center">{title}</h2>
+    <div class="space-y-8 text-left text-lg">
+      {faqs.map((faq) => (
+        <div>
+          <h3 class="font-semibold mb-2">{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+const { bgColorRed = true } = Astro.props;
+---
+
+<section
+  class={`bg-primary-950 text-accent-200`}
+>
+  <div class="max-w-7xl mx-auto flex flex-col-reverse items-center px-10 lg:flex-row">
+    <div class="lg:w-1/2 flex flex-col items-center py-10 h-[30rem] w-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.230997258122!2d-84.3256445!3d33.391137199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4f5edef2c1227%3A0x6c90be30352648a1!2sSpeedway%20Flight%20Training!5e0!3m2!1sen!2sbr!4v1742975425490!5m2!1sen!2sbr"
+        class="w-full h-full max-w-2xl"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <div class="w-10/12 lg:w-1/2 flex flex-col items-center py-10">
+      <div class="max-w-2xl lg:px-10 flex flex-col items-center">
+        <h2 class="text-3xl font-semibold text-center tracking-tight">
+          Our Location
+        </h2>
+        <h3 class="pt-10 w-full text-xl italic text-center">
+          Located at Atlanta Speedway Airport (KHMP) in Hampton, Georgia
+        </h3>
+        <div class="tracking-wider">
+          <p class="pt-10">
+            Echo Aviation is based just south of Atlanta at KHMP, a non-towered airport with quick access to nearby practice areas and Class B airspace. Our quiet airfield and flexible flying hours make it easy for students to get in the air and stay on track. 
+            We serve students from McDonough, Griffin, Fayetteville, Peachtree City, and surrounding areas.
+          </p>
+        </div>
+        <a href="/discovery-flight">
+          <div class="btn-accent mt-10">Visit Us Today</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

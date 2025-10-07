@@ -1,0 +1,142 @@
+---
+const { content } = Astro.props;
+---
+
+<section class="bg-checkered bg-fixed py-16 md:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-20 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+    >
+      {
+        content.heading && (
+          <h2 class="text-5xl lg:text-6xl font-sans1 text-center lg:text-right font-bold tracking-tight text-primary-500">
+            {content.heading}
+          </h2>
+        )
+      }
+      <dl class="col-span-2 grid grid-cols-1 gap-x-2 gap-y-8 sm:grid-cols-2">
+        <div
+          class="p-6 hover:shadow-xl hover:bg-primary-500/30 duration-700 rounded-md"
+        >
+          <dt class="text-lg font-semibold leading-7 text-accent-500">
+            <div class="mb-6 flex h-20 w-20 items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-20 w-20 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                data-slot="icon"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M10 19h-6a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1h6a2 2 0 0 1 2 2a2 2 0 0 1 2 -2h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2z"
+                ></path>
+                <path d="M12 5v16"></path>
+                <path d="M7 7h1"></path>
+                <path d="M7 11h1"></path>
+                <path d="M16 7h1"></path>
+                <path d="M16 11h1"></path>
+                <path d="M16 15h1"></path>
+              </svg>
+            </div>
+            {content.card1.title}
+          </dt>
+          <dd class="mt-1 font-sans1 text-base leading-7 text-cod-gray-100 pr-4">
+            {content.card1.description}
+          </dd>
+        </div>
+        <div
+          class="p-6 hover:shadow-xl hover:bg-primary-500/30 duration-700 rounded-md"
+        >
+          <dt class="text-lg font-semibold leading-7 text-accent-500">
+            <div class="mb-6 flex h-20 w-20 items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-20 w-20 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                data-slot="icon"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"
+                ></path>
+                <path d="M16 3v4"></path>
+                <path d="M8 3v4"></path>
+                <path d="M4 11h16"></path>
+                <path d="M8 14v4"></path>
+                <path d="M12 14v4"></path>
+                <path d="M16 14v4"></path>
+              </svg>
+            </div>
+            {content.card2.title}
+          </dt>
+          <dd class="mt-1 font-sans1 text-base leading-7 text-cod-gray-100 pr-4">
+            {content.card2.description}
+          </dd>
+        </div>
+        <div
+          class="p-6 hover:shadow-xl hover:bg-primary-500/30 duration-700 rounded-md"
+        >
+          <dt class="text-lg font-semibold leading-7 text-accent-500">
+            <div class="mb-6 flex h-20 w-20 items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-20 w-20 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                data-slot="icon"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"
+                ></path>
+              </svg>
+            </div>
+            {content.card3.title}
+          </dt>
+          <dd class="mt-1 font-sans1 text-base leading-7 text-cod-gray-100 pr-4">
+            {content.card3.description}
+          </dd>
+        </div>
+        <div
+          class="p-6 hover:shadow-xl hover:bg-primary-500/30 duration-700 rounded-md"
+        >
+          <dt class="text-lg font-semibold leading-7 text-accent-500">
+            <div class="mb-6 flex h-20 w-20 items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-20 w-20 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                data-slot="icon"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                <path
+                  d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+                ></path>
+              </svg>
+            </div>
+            {content.card4.title}
+          </dt>
+          <dd class="mt-1 font-sans1 text-base leading-7 text-cod-gray-100 pr-4">
+            {content.card4.description}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

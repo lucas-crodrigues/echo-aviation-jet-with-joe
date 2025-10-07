@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeaderSmall from "../../components/HeaderSmall.astro";
+import CTAColor from "../../components/CTAColor.astro";
+import CTAFlight from "../../data/CTAFlight.js";
+
+import TrainingRoadmap from "../../components/TrainingRoadmap.astro";
+import roadmap from "../../data/fastTrackRoadmap.js";
+
+import FastTrackTabs from "../../components/FastTrackTabs.astro";
+
+import ProgramDetails from "../../components/ProgramDetails.astro";
+import programData from "../../data/fastTrackData.js";
+
+import CTAFinancing from "../../components/CTAFinancing.astro";
+import financingCompData from "../../data/financingComp";
+---
+<BaseLayout
+  siteTitle={programData.pageTitle}
+  >
+  
+  <HeaderSmall content={programData.header} />
+  <div id="tabs" class="scroll-my-20"></div>
+  <FastTrackTabs />
+  <div id="info" class="scroll-my-20"></div>
+  <TrainingRoadmap content={roadmap} />
+
+  <CTAFinancing content={financingCompData} />
+  <CTAColor content={CTAFlight} />
+  
+</BaseLayout>

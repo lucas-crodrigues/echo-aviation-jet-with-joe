@@ -1,0 +1,30 @@
+---
+import FleetCard from "./FleetCard.astro";
+import { Image } from "astro:assets";
+import sky from "../assets/bg-clouds-from-above.webp";
+
+const { content } = Astro.props;
+---
+
+<section class="py-12 bg-gradient-to-b from-gray-50 to-primary-200/20">
+  <div class="container mx-auto px-6 lg:px-12">
+    <h2
+      class="mx-auto text-center px-5 lg:px-0 mb-3 text-3xl lg:text-5xl font-sans2 font-bold tracking-tight text-primary-800"
+    >
+      Our Fleet
+    </h2>
+    <div class="space-y-12 mt-5">
+      {
+        content.fleet.map((plane) => (
+          <FleetCard
+            name={plane.name}
+            imagePath={plane.image}
+            rates={plane.rates}
+            description={plane.description}
+            details={plane.details}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

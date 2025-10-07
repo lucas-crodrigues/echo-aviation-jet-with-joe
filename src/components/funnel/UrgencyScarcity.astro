@@ -1,0 +1,11 @@
+---
+// UrgencyScarcity.astro
+const { headline, subtext } = Astro.props;
+---
+
+<section class="py-10 bg-red-100 text-center">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <p class="text-2xl font-bold text-red-800">{headline}</p>
+    <p class="mt-2 text-base text-red-700">{subtext}</p>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import content from "../data/trainingInfo.js";
+import ImageComp from "./ImageComp.astro";
+import { BiSolidPlaneAlt } from "react-icons/bi";
+
+
+const { title, description, bullets, imagePath, buttons } = content;
+---
+
+<section class="py-16 lg:py-24 bg-checkered bg-fixed">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+    <!-- Text Content -->
+    <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
+      <h2 class="text-3xl lg:text-5xl font-bold text-cod-gray-100 mb-4"
+          set:html={title}
+      >
+      </h2>
+      <p class="text-xl text-cod-gray-200 font-semibold mb-6">{description}</p>
+      <ul class="space-y-3">
+        {bullets.map((bullet) => (
+          <li class="flex items-center space-x-3">
+            <BiSolidPlaneAlt className="text-accent-400 w-8 text-xl"/>
+            <span class="text-cod-gray-300 text-lg font-semibold">{bullet}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Image Section -->
+    <div class="w-full lg:w-1/2" data-aos="fade-right">
+      <ImageComp 
+        imagePath={imagePath} 
+        styles="rounded-lg shadow-lg w-full h-auto object-cover"
+      />
+      {
+        buttons && buttons.length > 0 && (
+          <div class="mt-6 flex space-x-4 justify-center lg:justify-start">
+            {buttons.map((button) => (
+              <a href={button.link} class="btn-accent">
+                {button.text}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+  </div>
+</section>

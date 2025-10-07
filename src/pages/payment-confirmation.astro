@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeaderScreen from "../components/HeaderScreen.astro";
+
+import { COMPANY_NAME } from "../consts";
+
+const contactConfirmation = {
+  data: {
+    pageTitle: "Payment Confirmation | Echo Aviation",
+
+    header: {
+      imagePath:
+        "/src/assets/stock-commercial-pilot-training-echo-aviation-affordable.jpg",
+      headerH1: "PAYMENT RECEIVED",
+      paragraph:
+        "Thank you for your payment to <strong>Echo Aviation</strong>. Your transaction has been completed successfully.<br/>One of our Training Advisors will be in touch shortly to confirm your next steps and get you scheduled.",
+      buttons: [
+        {
+          name: "Return to Home",
+          link: "/",
+          primary: false,
+        },
+      ],
+    },
+  },
+};
+
+const { data } = contactConfirmation;
+---
+
+<BaseLayout siteTitle={data.pageTitle}>
+  <HeaderScreen content={data.header} />
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Partner {
+  link: string;
+  img: string;
+  alt: string;
+}
+
+interface Props {
+  content: Partner[];
+}
+
+const { content }: Props = Astro.props;
+
+// Dynamically import all images
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif,webp,svg}",
+);
+
+const resolvedImages = await Promise.all(
+  content.map(async (partner) => {
+    const fileName = partner.img.split("/").pop(); // gets 'logo-fsana.png'
+    const fullPath = `/src/assets/${fileName}`;
+    if (images[fullPath]) {
+      const importedImage = await images[fullPath]();
+      return { ...partner, imgSrc: importedImage.default };
+    } else {
+      console.error(`Image not found: ${fullPath}`);
+      return { ...partner, imgSrc: null };
+    }
+  }),
+);
+---
+
+<section
+  class="absolute z-40 top-[81vh] py-5 px-5 left-5 right-5 mx-auto md:px-20 max-w-max flex flex-col md:gap-5 md:flex-row items-center bg-accent-300 backdrop-blur-sm rounded-lg shadow-md"
+>
+  <div
+    class="flex-1 h-12 border-accent-400 md:border-r-2 md:pr-4 flex items-center"
+  >
+    <p class="hidden text-accent-700 md:block text-lg w-max">
+      Proudly Partnered with
+    </p>
+  </div>
+  <div class="flex flex-row gap-1 w-full justify-around items-center">
+    {
+      resolvedImages.map((partner) => (
+        <a
+          href={partner.link}
+          class="h-10 w-auto lg:h-14"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {partner.imgSrc ? (
+            <Image
+              alt=""
+              src={partner.imgSrc}
+              alt={partner.alt}
+              width={200}
+              loading="eager"
+              class="h-10 w-auto lg:h-14"
+            />
+          ) : (
+            <span>Error: Image not found</span>
+          )}
+        </a>
+      ))
+    }
+  </div>
+</section>

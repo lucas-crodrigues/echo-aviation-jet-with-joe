@@ -1,0 +1,112 @@
+---
+import ImageComp from "./ImageComp.astro";
+
+const { content } = Astro.props;
+---
+
+<section
+  id={content.heading}
+  class="w-full py-20 flex justify-center align-middle items-center bg-neutral-900/80"
+>
+  <div>
+    <div class="w-full lg:mx-0 text-center mb-16">
+      {
+        content.upperHeading && (
+          <p class="mx-auto mt-12 uppercase text-lg lg:text-xl font-sans font-bold tracking-tight text-accent-400">
+            {content.upperHeading}
+          </p>
+        )
+      }
+      {
+        content.heading && (
+          <h2 class="mx-auto px-5 lg:px-0 mb-3 text-3xl lg:text-5xl font-sans2 font-bold tracking-tight text-accent-200">
+            {content.heading}
+          </h2>
+        )
+      }
+      {
+        content.descriptions && (
+          <div class="max-w-4xl mx-auto px-4 lg:px-0 text-accent-300">
+            {content.descriptions.map((p) => (
+              <p
+                class="mx-auto mb-4 text-lg tracking-loose leading-relaxed text-muted-800"
+                set:html={p}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+    {
+      content.steps && (
+        <div class="max-w-6xl mx-auto">
+          {content.steps.map((step, index) => (
+            <div
+              class={`relative mt-12 flex flex-wrap justify-center gap-8 lg:gap-0 items-center align-middle`}
+            >
+              <div class="pt-12 lg:pt-10 flex flex-col justify-center align-middle items-center w-full lg:w-1/2">
+                <h3
+                  class={`${index % 2 ? "left-2" : "right-2"} top-2 text-2xl aspect-square absolute font-sans bg-primary-500/90 rounded-md py-2 px-5 font-semibold text-accent-100`}
+                >
+                  {index + 1}
+                </h3>
+                <div
+                  class={`${index % 2 ? "lg:text-left lg:pl-6" : "lg:text-right lg:pr-6"} px-3 text-center z-10`}
+                >
+                  {step.link ? (
+                    <a
+                      href={step.link}
+                      target="_blank"
+                      class="hover:brightness-125 duration-100"
+                    >
+                      <h3 class="text-3xl md:text-3xl mb-4 font-bold tracking-tight text-primary-500">
+                        {step.title}
+                      </h3>
+                    </a>
+                  ) : (
+                    <h3 class="text-3xl md:text-3xl mb-4 font-bold tracking-tight text-primary-500">
+                      {step.title}
+                    </h3>
+                  )}
+
+                  {step.paragraphs.map((par) => (
+                    <p
+                      class="text-lg mb-3 font-sans2 text-accent-200"
+                      set:html={par}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div
+                class={`${index % 2 === 0 ? "lg:order-none" : ""} order-first lg:rounded-md shadow-md aspect-square md:aspect-video lg:aspect-square overflow-hidden w-full lg:w-1/2`}
+              >
+                <ImageComp
+                  styles="object-cover w-full h-full"
+                  imagePath={step.imagePath}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+    <div class="mt-16 px-5 lg:px-0">
+      <p
+        class="text-center text-accent-200 mx-auto font-medium text-xl max-w-5xl"
+        set:html={content.finalParagraph}
+      />
+      {
+        content.finalButton && (
+          <div class="mt-6 flex flex-wrap justify-center w-full align-middle items-center gap-6 z-10">
+            <a
+              href={content.finalButton.link}
+              class={`${content.finalButton.primary ? "btn-primary" : "btn-white"} w-full md:w-auto`}
+            >
+              {content.finalButton.name}
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

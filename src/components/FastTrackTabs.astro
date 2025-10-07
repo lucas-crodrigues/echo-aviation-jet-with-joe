@@ -1,0 +1,101 @@
+---
+import ProgramDetails from "../components/ProgramDetails.astro";
+import fastTrackZeroToCFIData from "../data/fastTrackZeroToCFIData.js";
+import fastTrackZeroToCPLData from "../data/fastTrackZeroToCPLData.js";
+import fastTrackStartingAtIR from "../data/fastTrackStartingAtIR.js";
+import fastTrackStartingAtCPL from "../data/fastTrackStartingAtCPL.js";
+---
+
+<section
+  class="pt-5 pb-5 bg-checkered bg-fixed"
+  x-data="{
+    selected: 'zero',
+    init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tab = urlParams.get('tab');
+      if (['zero', 'ir', 'cpl', 'zero-cpl'].includes(tab)) {
+        this.selected = tab;
+      }
+    },
+    setTab(tab) {
+      this.selected = tab;
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', tab);
+      window.history.replaceState({}, '', url);
+    }
+  }"
+  x-init="init()"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-center gap-4 flex-wrap">
+      <button
+        class="px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 border"
+        :class="selected === 'zero' ? 'bg-primary-700 text-accent-500 border-primary-700' : 'text-accent-500 border-accent-500 hover:bg-primary-800'"
+        @click="setTab('zero')"
+      >
+        Zero to MEI
+      </button>
+      <button
+        class="px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 border"
+        :class="selected === 'zero-cpl' ? 'bg-primary-700 text-accent-500 border-primary-700' : 'text-accent-500 border-accent-500 hover:bg-primary-800'"
+        @click="setTab('zero-cpl')"
+      >
+        Zero to Commercial
+      </button>
+      <button
+        class="px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 border"
+        :class="selected === 'ir' ? 'bg-primary-700 text-accent-500 border-primary-700' : 'text-accent-500 border-accent-500 hover:bg-primary-800'"
+        @click="setTab('ir')">Start at Instrument</button
+      >
+      <button
+        class="px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 border"
+        :class="selected === 'cpl' ? 'bg-primary-700 text-accent-500 border-primary-700' : 'text-accent-500 border-accent-500 hover:bg-primary-800'"
+        @click="setTab('cpl')">Start at Commercial</button
+      >
+    </div>
+  </div>
+
+  <div
+    x-show="selected === 'zero'"
+    x-transition:enter="transition-opacity duration-500"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-cloak
+  >
+    <ProgramDetails program={fastTrackZeroToCFIData.details} />
+  </div>
+
+  <div
+    x-show="selected === 'zero-cpl'"
+    x-transition:enter="transition-opacity duration-500"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-cloak
+  >
+    <ProgramDetails program={fastTrackZeroToCPLData.details} />
+  </div>
+
+  <div
+    x-show="selected === 'ir'"
+    x-transition:enter="transition-opacity duration-500"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-cloak
+  >
+    <ProgramDetails program={fastTrackStartingAtIR.details} />
+  </div>
+
+  <div
+    x-show="selected === 'cpl'"
+    x-transition:enter="transition-opacity duration-500"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-cloak
+  >
+    <ProgramDetails program={fastTrackStartingAtCPL.details} />
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer
+></script>

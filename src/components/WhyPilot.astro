@@ -1,0 +1,45 @@
+---
+import WhyBecomePilot from "./WhyBecomePilot";
+
+const { content } = Astro.props;
+---
+
+<section id="brokerageServices" class="py-24 px-5 bg-primary-950 scroll-my-20">
+  <div
+    class="max-w-xl gap-10 lg:max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:gap-20"
+  >
+    <div class="flex flex-col lg:flex-1 text-center lg:text-left">
+      {
+        content.upperHeading && (
+          <h2 class="uppercase text-primary font-bold text-primary-500 tracking-widest">
+            {content.upperHeading}
+          </h2>
+        )
+      }
+      {
+        content.heading && (
+          <h3 class="text-5xl text-accent-500 font-bold leading-tight">
+            {content.heading}
+          </h3>
+        )
+      }
+      {
+        content.description.map((text) => (
+          <p class="text-cod-gray-100 font-sans1 leading-relaxed my-5 mt-2 pr-5 lg:py-0">
+            {text}
+          </p>
+        ))
+      }
+      <a
+        href={content.buttonLink}
+        class="mx-auto lg:mx-0 btn-accent"
+      >
+        {content.buttonText}
+      </a>
+    </div>
+
+    <div class="flex-1 w-full overflow-hidden">
+      <WhyBecomePilot client:visible reasons={content.reasons} />
+    </div>
+  </div>
+</section>

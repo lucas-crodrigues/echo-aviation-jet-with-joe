@@ -1,0 +1,39 @@
+---
+import ImageComp from "./ImageComp.astro";
+import highlights from "../data/highlightsData.js";
+---
+
+<section class="bg-accent-100 flex flex-col items-center px-5">
+  <h3 class="mx-auto mb-3 py-5 text-3xl lg:text-5xl max-w-3xl font-sans2 text-center font-bold tracking-tight text-cod-gray-900">
+    {highlights.heading}
+  </h3>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 max-w-4xl gap-5">
+    {highlights.items.slice(0, 2).map((item) => (
+      <div class="flex flex-row pt-10 first:pt-0 lg:pt-0">
+        <div class="pr-10">
+          <ImageComp imagePath={item.imagePath} styles="border-2 border-primary-500 rounded-full p-3 bg-white" />
+        </div>
+        <div class="flex flex-col">
+          <h4 class="font-header uppercase font-semibold text-xl">{item.title}</h4>
+          <p>{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="py-10">
+    <div class="lg:max-w-md flex flex-row">
+      <div class="pr-10">
+        <ImageComp
+          imagePath={highlights.items[2].imagePath}
+          styles="border-2 border-primary-500 rounded-full p-3 bg-white"
+        />
+      </div>
+      <div class="flex flex-col">
+        <h4 class="font-header uppercase font-semibold text-xl">{highlights.items[2].title}</h4>
+        <p>{highlights.items[2].description}</p>
+      </div>
+    </div>
+  </div>
+</section>

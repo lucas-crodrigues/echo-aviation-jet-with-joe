@@ -1,0 +1,104 @@
+---
+import galleryData from '../data/galleryData';
+import ImageCompGallery from './ImageCompGallery.astro';
+
+const { pictures } = galleryData.data;
+---
+
+<section class="gallery-section py-12 bg-gray-100">
+  <div class="container mx-auto px-4">
+
+    <!-- Gallery Grid -->
+    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {pictures.map((image, index) => (
+        <div
+          class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+          data-index={index}
+          data-image-path={image.imagePathPub}
+          data-widths={JSON.stringify([240, 540, 720, 1080, 1440, 1980])}
+          data-sizes="(max-width: 300px) 240px, (max-width: 660px) 540px, (max-width: 900px) 720px, (max-width: 1200px) 1080px, (max-width: 1800px) 1440px, 1920px"
+        >
+          <ImageCompGallery
+            imagePath={image.imagePath}
+            loading="lazy"
+            styles="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="image-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-75 backdrop-blur-sm">
+    <div class="relative">
+      <button
+        id="close-modal"
+        class="absolute top-2 right-2 text-accent-100 bg-gray-900 rounded-full p-1 lg:p-2 text-xs lg:text-md hover:bg-gray-700"
+      >
+        ✖
+      </button>
+      <img
+        id="modal-image"
+        src=""
+        alt=""
+        class="max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-lg"
+        sizes=""
+        srcset=""
+        loading="eager"
+      />
+    </div>
+  </div>
+
+  <!-- Add JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const closeModal = document.getElementById('close-modal');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const imagePath = item.getAttribute('data-image-path');
+          const widths = JSON.parse(item.getAttribute('data-widths'));
+          const sizes = item.getAttribute('data-sizes');
+
+          // Generate srcset attribute for responsive images
+          const srcset = widths
+            .map((width) => `${imagePath}?w=${width} ${width}w`)
+            .join(', ');
+
+          modalImage.src = `${imagePath}?w=720`; // Default resolution for fast loading
+          modalImage.srcset = srcset;
+          modalImage.sizes = sizes;
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        modalImage.src = "";
+        modalImage.srcset = "";
+        modalImage.sizes = "";
+        document.body.style.overflow = '';
+      });
+
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('flex');
+          modal.classList.add('hidden');
+          modalImage.src = "";
+          modalImage.srcset = "";
+          modalImage.sizes = "";
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+</section>

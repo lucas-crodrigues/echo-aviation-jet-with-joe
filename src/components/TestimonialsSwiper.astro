@@ -1,0 +1,53 @@
+---
+import TestimonialsCard from "./TestimonialsCard.astro";
+
+const { content } = Astro.props;
+---
+
+<section class="py-8 px-4 overflow-hidden">
+  <div class="">
+    {
+      content.upperHeading && (
+        <p class="mx-auto mt-12 uppercase text-lg lg:text-xl lg:max-w-3xl font-sans2 text-center font-bold tracking-tight text-primary-700">
+          {content.upperHeading}
+        </p>
+      )
+    }
+    {
+      content.heading && (
+        <h2 class="mx-auto mb-3 font-sans2 text-3xl lg:text-4xl lg:max-w-3xl text-center font-bold tracking-tight text-accent-200 uppercase">
+          {content.heading}
+        </h2>
+      )
+    }
+    {
+      content.heading && (
+        <p class="mx-auto mb-5 text-lg lg:text-xl max-w-3xl text-center tracking-loose text-accent-200">
+          {content.description}
+        </p>
+      )
+    }
+  </div>
+  <div class="slider-row">
+    <div class="swiper creativeSwiper magic-cursor w-11/12 h-full">
+      <div class="swiper-wrapper pb-8">
+        {
+          content.cards.map((testimonial) => (
+            <div class="swiper-slide rounded-lg overflow-hidden">
+              <TestimonialsCard
+                quoteText={testimonial.quoteText}
+                citeText={testimonial.citeText}
+                imagePath={testimonial.imagePath}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <div class="hidden lg:block">
+        <div class="swiper-pagination bg-gradient-to-r from-transparent via-accent-200/50 to-transparent rounded-xl -z-50"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</section>

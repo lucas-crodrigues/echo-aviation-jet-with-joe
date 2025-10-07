@@ -1,0 +1,191 @@
+---
+// start-flying.astro
+import FunnelLayout from "../layouts/FunnelLayout.astro";
+
+// Funnel components
+import HeroOffer from "../components/funnel/HeroOffer.astro";
+import HowItWorks from "../components/funnel/HowItWorks.astro";
+import WhatsIncluded from "../components/funnel/WhatsIncluded.astro";
+import WhyEchoAviation from "../components/funnel/WhyEchoAviation.astro";
+import Testimonials from "../components/funnel/Testimonials.astro";
+import UrgencyScarcity from "../components/funnel/UrgencyScarcity.astro";
+import CheckoutSection from "../components/funnel/CheckoutSection.astro";
+import FaqSection from "../components/funnel/FaqSection.astro";
+import FinalCtaSection from "../components/funnel/FinalCtaSection.astro";
+---
+
+<FunnelLayout
+  siteTitle="Start Flying with Echo Aviation"
+>
+  <div class="relative z-10">
+    <HeroOffer
+      title="Reserve Your Flight Training Spot with Just $500"
+      description="Includes course materials and a one-on-one CFI pairing to take you from zero to Certified Flight Instructor."
+      buttonText="Secure My Spot"
+      buttonLink="#checkout"
+      discountInfo="Limited Spots, Each Instructor Only Takes 3–4 Students"
+    />
+    <div class="absolute w-full h-[8vh] -bottom-[1px]">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        class="w-full h-full block"
+      >
+        <polygon points="0,100 100,0 100,100" fill="white"></polygon>
+      </svg>
+    </div>
+  </div>
+
+  <div class="relative z-10 bg-transparent isolate -mt-[1px]">
+    <div class="absolute w-full h-[8vh] top-0">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        class="w-full h-full block z-10"
+      >
+        <polygon points="0,0 100,0 0,100" fill="white"></polygon>
+      </svg>
+    </div>
+    <HowItWorks
+      title="How It Works"
+      firstStep="Make a $500 deposit to secure your place, CFIs are limited to just 3–4 students."
+      secondStep="We’ll pair you with a personal Certified Flight Instructor based on your location and goals."
+      thirdStep="Begin training one-on-one, your deposit counts toward your total flight training cost."
+      fourthStep="Continue with your CFI or enroll in a full Echo Aviation program when you're ready."
+    />
+    <div class="absolute w-full h-[8vh] -bottom-[1px]">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        class="w-full h-full block"
+      >
+        <polygon points="0,100 100,0 100,100" fill="#f9fafb"></polygon>
+      </svg>
+    </div>
+  </div>
+
+  <div class="relative z-10 bg-gray-50">
+    <div class="absolute w-full h-[8vh] top-0">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        class="w-full h-full block"
+      >
+        <polygon points="0,0 100,0 0,100" fill="#f9fafb"></polygon>
+      </svg>
+    </div>
+    <WhatsIncluded
+      title="What You Get"
+      items={[
+        "Guaranteed spot with one of our top Certified Flight Instructors (CFIs)",
+        "Course materials to help you prepare for training",
+        "A dedicated instructor to guide you from zero to CFI",
+        "Apply your $500 deposit directly toward flight training costs",
+        "Flexible scheduling with your instructor, train on your timeline",
+        "No recurring fees, just a one-time deposit to begin",
+      ]}
+    />
+  </div>
+
+  <WhyEchoAviation
+    title="Why Echo Aviation?"
+    paragraph1="Most flight schools require you to adapt to their schedule, their pricing, and their pace. Echo Aviation flips that model. You choose your goals, your timeline, and your instructor. Our network of independent CFIs gives you the freedom to train your way, whether that’s full-time or a few hours a week."
+    paragraph2="Instead of locking you into a program, we let you secure your spot with a $500 deposit. That deposit goes directly toward your flight training, and reserves you a limited seat with one of our top instructors, each working with just 3–4 students at a time."
+    buttonText="Secure My Spot"
+    buttonLink="#checkout"
+    imagePath="/src/assets/stock-lucas-flight-training-unsplash.jpg"
+  />
+  <Testimonials
+    title="Testimonials"
+    subtitle="What Echo students are saying"
+    testimonials={[
+      {
+        quote:
+          "I am so happy I found my CFI through the independent CFI network! I am on the schedule to fly 7 days a week for the next 2 months!",
+        name: "Myles J.",
+        location: "Atlanta, GA",
+        image:
+          "/src/assets/IMG_5777.jpeg",
+      },
+      {
+        quote:
+          "I love that I have a plane that is available for me every day! I’m flying 3–6 hours daily on my way to 250 hours in less than 3 months!",
+        name: "Keith C.",
+        location: "Akron, OH",
+        image:
+          "/src/assets/IMG_6224.jpeg",
+      },
+      {
+        quote:
+          "Having a plane and CFI that I can schedule anytime I want has been a game changer.",
+        name: "Christian J.",
+        location: "Fort Myers, FL",
+        image:
+          "/src/assets/IMG_1993.jpeg",
+      },
+      {
+        quote:
+          "Since I started training with Echo Aviation I was able to fly more in one month than I did at my previous 141 school in 4 months, and for way less money!",
+        name: "Mike P.",
+        location: "Phoenix, AZ",
+        image:
+          "/src/assets/IMG_3385.jpeg",
+      },
+      {
+        quote:
+          "I love instructing with Echo Aviation as an independent CFI. I work with student pilots that want to fly every day and get all their ratings in under 6 months!",
+        name: "Aneri L.",
+        location: "Buffalo, NY",
+        image:
+          "/src/assets/IMG_5542.jpeg",
+      },
+      {
+        quote:
+          "I love instructing students that have a mission to get things done, especially career 2.0 students who fly 5–7 days a week!",
+        name: "Rashen J.",
+        location: "Sacramento, CA",
+        image:
+          "/src/assets/IMG_5584.jpeg",
+      },
+    ]}
+  />
+  <UrgencyScarcity
+    headline="Secure Your Instructor Before Slots Fill Up"
+    subtext="A $500 deposit locks in your spot with one of our independent CFIs, each instructor only takes on 3–4 students at a time. Your deposit goes straight toward flight training."
+  />
+  <CheckoutSection
+    heading="Secure Your Spot with a $500 Deposit"
+    paragraph="Your deposit guarantees one of our independent CFIs, each instructor only accepts 3–4 students. The full amount goes directly toward your flight training (about 7 hours of one-on-one instruction)."
+    supportText="Need help? Call us at (330) 993-4243"
+    iframeSrc="https://msg.flightschoolcrm.com/widget/form/5hMnT4BShE0MFNe2Dk6y"
+    imagePath="/src/assets/stock-benjamin-chambon-omibL6tRSC0-unsplash.jpg"
+  />
+  <FaqSection
+    title="Frequently Asked Questions"
+    faqs={[
+      {
+        question: "Can I use the $500 deposit toward any rating?",
+        answer: "Yes, the hours earned from your deposit can be applied toward any certificate or rating: Private, Instrument, Commercial, or Instructor. It's entirely your choice."
+      },
+      {
+        question: "Does the deposit include aircraft rental?",
+        answer: "No, the $500 deposit covers approximately 7 hours of instruction with a Certified Flight Instructor. Aircraft rental is arranged separately with your instructor or a local FBO."
+      },
+      {
+        question: "What happens after the initial instruction?",
+        answer: "Most students continue with their instructor at regular hourly rates or enroll in one of our structured programs. You're never locked into a contract or subscription."
+      },
+      {
+        question: "How soon can I start flying?",
+        answer: "Once you complete the checkout form, we’ll begin matching you with a nearby instructor. Most students start flying within a week."
+      }
+    ]}
+  />
+  <FinalCtaSection
+    title="Your Aviation Journey Starts Now"
+    paragraph="This is your first step toward real flight time. Submit your $500 deposit, get matched with a top-tier instructor, and start logging hours within days, not months."
+    buttonText="Get Started Now"
+    buttonLink="#checkout"
+    note="Training begins as soon as you're ready. Reserve while instructor slots are open."
+  />
+</FunnelLayout>

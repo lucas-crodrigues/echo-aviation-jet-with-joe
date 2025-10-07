@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Block admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_astro/
+Disallow: /api/
+
+# Allow important files
+Allow: /sitemap-index.xml
+Allow: /sitemap*.xml
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.svg
+Allow: *.pdf
+
+# Sitemap location
+Sitemap: https://echoaviation.training/sitemap-index.xml

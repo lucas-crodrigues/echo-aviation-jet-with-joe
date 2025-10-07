@@ -1,0 +1,22 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+const { imagePath, quality = 30, styles, loading, widths, sizes } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/public/gallery/*.{jpeg,jpg,png,gif,webp}",
+);
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "public/gallery/*.{jpeg,jpg,png,gif,webp}"`,
+  );
+---
+
+<Image
+  alt=""
+  src={images[imagePath]()}
+  class={styles}
+  quality={quality}
+  loading={loading}
+/>

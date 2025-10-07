@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeaderScreen from "../components/HeaderScreen.astro";
+import { COMPANY_NAME} from "../consts";
+
+const data404 = {
+  data: {
+    pageTitle: `404 | ${COMPANY_NAME}`,
+
+    header: {
+      imagePath: "/src/assets/stock-404-page.jpg",
+      headerH1: `well, this is AWKWARD!`,
+      paragraph: `It appears the page you're trying to access has already taken off, if you were trying to get some useful information please inform us so we can better accommodate your needs, otherwise just head on back to landing!`,
+      buttons: [
+        {
+          name: "Home Page",
+          link: "/",
+          primary: false,
+        },
+        {
+          name: "Contact us",
+          link: "/about#contact",
+          primary: false,
+        },
+      ],
+    },
+  },
+};
+
+const { data } = data404;
+---
+
+<BaseLayout
+  siteTitle={data.pageTitle}
+>
+  <HeaderScreen content={data.header} />
+</BaseLayout>

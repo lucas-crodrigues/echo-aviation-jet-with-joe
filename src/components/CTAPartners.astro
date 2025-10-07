@@ -1,0 +1,91 @@
+---
+import ImageComp from "./ImageComp.astro";
+
+const { data } = Astro.props;
+---
+
+<section class="bg-primary-600 py-20">
+  <div
+    class="mx-auto px-6 flex flex-col items-center justify-center gap-12 max-w-5xl"
+  >
+    {/* Text block */}
+    <div
+      class="w-full max-w-2xl text-lg leading-relaxed font-light text-accent-100 text-center"
+    >
+      <h2 class={data.textStyle}>{data.title}</h2>
+      <p class="mt-4">{data.description || ""}</p>
+    </div>
+
+    {/* Logo grid */}
+    <div
+      class="w-full grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-x-10 gap-y-12 place-items-center"
+    >
+      <a
+        href="/partners#fly-with-trent"
+        rel="noopener"
+        class="w-full h-32 flex items-center justify-center"
+      >
+        <ImageComp
+          imagePath="/src/assets/fly-w-trent-d.jpg"
+          styles="object-contain max-h-28 max-w-[90%] w-full"
+          quality={60}
+        />
+      </a>
+      <a
+        href="/partners#jet-with-joe"
+        rel="noopener"
+        class="w-full h-32 flex items-center justify-center"
+      >
+        <ImageComp
+          imagePath="/src/assets/jet-with-joe-logo-mixed.webp"
+          styles="object-contain max-h-28 max-w-[90%] w-full"
+          quality={60}
+        />
+      </a>
+      <a
+        href="/partners#stratus-financial"
+        rel="noopener"
+        class="w-full h-32 flex items-center justify-center"
+      >
+        <ImageComp
+          imagePath="/src/assets/stratus-financial-white-logo.png"
+          styles="object-contain max-h-28 max-w-[90%] w-full"
+          quality={60}
+        />
+      </a>
+      <a
+        href="/partners#fly-with-wallace"
+        rel="noopener"
+        class="w-full h-32 flex items-center justify-center"
+      >
+        <ImageComp
+          imagePath="/src/assets/fly-w-wallace.png"
+          styles="object-contain max-h-28 max-w-[90%] w-full"
+          quality={60}
+        />
+      </a>
+      <a
+        href="/partners#fly-with-wayne"
+        rel="noopener"
+        class="w-full h-32 flex items-center justify-center"
+      >
+        <ImageComp
+          imagePath="/src/assets/fly-w-wayne.png"
+          styles="object-contain max-h-28 max-w-[90%] w-full"
+          quality={60}
+        />
+      </a>
+      <a
+        href="/partners#pro-pilot"
+        rel="noopener"
+        class="w-full flex items-center justify-center bg-white p-4 rounded-lg"
+      >
+        <ImageComp
+          imagePath="/src/assets/pro-pilot-playbook.jpg"
+          styles="object-contain"
+          quality={60}
+        />
+      </a>
+    </div>
+  </div>
+</section>

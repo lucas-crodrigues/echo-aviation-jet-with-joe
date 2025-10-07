@@ -1,0 +1,66 @@
+---
+import { YouTube } from "astro-embed";
+
+const { videos, videoSectionData } = Astro.props;
+---
+
+<section class="pt-8 pb-8 lg:pt-16 bg-primary-900">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col justify-center">
+    <!-- Heading and Description -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-5xl font-bold text-accent-500 mb-4">
+        {videoSectionData.title}
+      </h2>
+      <p class="text-lg text-cod-gray-100 max-w-4xl mx-auto">
+        {videoSectionData.description}
+      </p>
+    </div>
+
+    <!-- Video Alternating Flex Layout -->
+    {videos?.length ? (
+      <>
+        <div class="flex flex-col gap-12 mb-8">
+          {videos.map((video, index) => (
+            <section
+              id={video.title}
+              class="bg-gray-900 pb-4 md:py-12 lg:py-0"
+            >
+              <div
+                class={`mx-auto flex items-center justify-center gap-9 md:gap-12 flex-wrap max-w-7xl ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+              >
+                <div class="w-full md:w-1/3 pt-16 md:py-0 px-2 md:px-0">
+                  <h2
+                    class={`mt-2 text-4xl font-bold tracking-tight leading-tighter text-primary-300 lg:text-5xl text-center px-3 md:px-0 ${
+                      index % 2 === 0 ? "md:text-left" : "md:text-right"
+                    }`}
+                  >
+                    {video.title}
+                  </h2>
+                </div>
+
+                <div class="w-full md:w-1/2 flex justify-center aspect-square lg:aspect-auto">
+                  <YouTube
+                    id={video.id}
+                    class="w-full h-auto"
+                    params="start=0"
+                    posterQuality="max"
+                  />
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+        <a
+          href="https://www.youtube.com/@jetwithjoe"
+          target="_blank"
+          rel="noopener"
+          class="btn-accent mx-auto"
+        >
+          Visit our YouTube Channel
+        </a>
+      </>
+    ) : null}
+  </div>
+</section>

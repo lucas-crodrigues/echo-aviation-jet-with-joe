@@ -1,0 +1,388 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import HeaderScreen from "../components/HeaderScreen.astro";
+import ImageComp from "../components/ImageComp.astro";
+import ContactUs from "../components/ContactUs.astro";
+import YouTubeSection from "../components/YouTubeSection.astro";
+import videos from "../data/videos";
+import CTAColor from "../components/CTAColor.astro";
+import CTAFlight from "../data/CTAFlight";
+import { COMPANY_NAME } from "../consts";
+import CTAPartners from "../components/CTAPartners.astro";
+
+const data = {
+  pageTitle: `Our Partners | ${COMPANY_NAME}`,
+
+  header: {
+    imagePath: "/src/assets/partners-hero.jpg",
+    headerH1: "Our Partners",
+    paragraph: "At Echo Aviation, we believe in the power of collaboration. Our network of partners includes flight schools, independent CFIs, and aviation professionals who share our commitment to providing flexible, affordable flight training. Together, we're redefining what it means to learn to fly.",
+    buttons: [
+      {
+        name: "Get Started",
+        link: "/partners#contact",
+      }
+    ],
+  },
+  cta: {
+    title: "Fly with Us",
+    description: "See how our partners are transforming flight training. Whether you're a student pilot or an experienced aviator, our network offers the resources and expertise you need to succeed in your aviation journey.",
+    textStyle: "text-3xl md:text-4xl lg:text-5xl font-bold text-accent-500",
+  }
+}
+
+const flyWithTrentVideos = videos.flyWithTrent.slice(0, 2) || [];
+const jetWithJoeVideos = videos.jetWithJoe.slice(0, 2) || [];
+
+const videosData = [...flyWithTrentVideos, ...jetWithJoeVideos];
+const videoSectionData = {
+  title: "Featured Partner Videos",
+  description: "Learn more about our partners and their unique approaches to flight training.",
+};
+---
+
+<BaseLayout
+  siteTitle={data.pageTitle}
+>
+
+<HeaderScreen content={data.header} />
+
+<CTAPartners data={data.cta} />
+
+<section class="relative py-16 lg:py-24">
+  <div class="absolute -z-30 inset-0" aria-hidden="true">
+    <ImageComp
+      imagePath="/src/assets/stock-saj-shafique-xFT4NCf8hQk-unsplash.jpg"
+      loading="eager"
+      styles="absolute object-cover h-full w-full object-center -z-50"
+    />
+    <div class="absolute bg-gray-900/80 w-full h-full z-0"></div>
+  </div>
+
+  <div class="relative z-10 space-y-12 max-w-7xl mx-auto">
+    <!-- Fly with Trent Block -->
+    <div id="fly-with-trent" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="flex justify-center ">
+          <ImageComp
+            imagePath="/src/assets/fly-w-trent-d.jpg"
+            styles="w-auto object-contain h-96"
+          />
+        </div>
+        <div class="text-white">
+          <h3 class="text-3xl font-bold mb-4 text-accent-300">Fly with Trent</h3>
+          <p class="text-gray-200 mb-4">
+            Trent is an FAA Gold Seal Certified Flight Instructor with over a decade of experience specializing in tailwheel, spin-training, and aerobatic operations. Based at Arlington Municipal Airport (KAWO) in Washington, he flies Cessna 170s and Champion Citabrias to deliver personalized one-on-one instruction.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">1,200+ dual-instruction hours & Gold Seal CFI</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Tailwheel & aerobatic endorsements</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Champion Citabria & Cessna 170 equipped for advanced maneuvers</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Comprehensive ground school & FAA exam prep</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Flexible scheduling — evenings, weekends & cross-country</span>
+            </li>
+          </ul>
+          <p class="text-gray-300">
+            Whether you’re pursuing your private license, mastering cross-country navigation, or earning an aerobatic endorsement, Trent’s personalized approach ensures you build confidence and precision in every flight.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jet with Joe Block -->
+    <div id="jet-with-joe" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-white">
+          <h3 class="text-3xl font-bold mb-4 text-accent-300">Jet with Joe</h3>
+          <p class="text-gray-200 mb-4">
+            Joe is a veteran jet instructor with over 4,000 hours in light jets, specializing in Citation Mustang and CJ series. Based at Miami-Opa Locka Executive Airport (KOPF), he offers tailored jet transition training and recurrent checks.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Citation Mustang & CJ1/CJ3 type ratings</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">FAA Gold Seal jet instructor</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Flight planning & performance training</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Flexible scheduling: days, evenings & weekends</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Cold weather & high-altitude operations</span>
+            </li>
+          </ul>
+          <p class="text-gray-300">
+            Joe’s approach ensures safety and precision in every phase, from ground prep to high-speed cruise, empowering pilots to master jet operations with confidence.
+          </p>
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <ImageComp
+            imagePath="/src/assets/jet-with-joe-logo-mixed.webp"
+            styles="w-auto object-contain h-80"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Pro Pilot -->
+    <div id="pro-pilot" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="flex justify-center  bg-white p-4 rounded-lg">
+          <ImageComp
+            imagePath="/src/assets/pro-pilot-playbook.jpg"
+            styles="w-auto object-contain"
+          />
+        </div>
+        <div class="text-white">
+          <h3 class="text-3xl font-bold mb-4 text-accent-300">Pro Pilot Playbook</h3>
+          <p class="text-gray-200 mb-4">
+            The Pro Pilot Playbook is your ultimate resource for mastering the aviation industry. From flight training to career advancement, our comprehensive guides and expert insights help you navigate every step of your journey.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">In-depth flight training resources</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Career advancement strategies</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Expert insights from industry veterans</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Step-by-step career action plans for getting hired at the airlines or a corporate job FAST</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-gray-200">Join a community of aspiring and professional pilots</span>
+            </li>
+          </ul>
+          <p class="text-gray-300">
+            Whether you’re just starting your aviation journey or looking to elevate your career, the Pro Pilot Playbook provides the tools and knowledge you need to succeed.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stratus Financial Block -->
+  <div id="stratus-financial" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center ">
+        <ImageComp
+          imagePath="/src/assets/stratus-financial-white-logo.png"
+          styles="w-auto object-contain h-80"
+        />
+      </div>
+      <div class="text-white">
+        <h3 class="text-3xl font-bold mb-4 text-accent-300">Stratus Financial</h3>
+        <p class="text-gray-200 mb-4">
+          Stratus Financial is dedicated to empowering future aviators with tailored financing solutions for flight training. Whether you're just starting out or advancing your aviation career, Stratus offers competitive loan options, fast approvals, and flexible terms to help make your dreams of becoming a pilot a reality.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Flight training financing for all stages—from private to ATP</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">No prepayment penalties & flexible repayment options</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Quick approvals and personalized service</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Loans available for flight, maintenance, and dispatcher training</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Support every step of the way—mentorship and career resources</span>
+          </li>
+        </ul>
+        <p class="text-gray-300">
+          Take the next step in your aviation journey—let Stratus Financial help you soar!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fly With Wallace Block -->
+  <div id="fly-with-wallace" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center">
+        <ImageComp
+          imagePath="/src/assets/fly-w-wallace.png"
+          styles="w-auto object-contain h-96"
+        />
+      </div>
+      <div class="text-white">
+        <h3 class="text-3xl font-bold mb-4 text-accent-300">Fly With Wallace</h3>
+        <p class="text-gray-200 mb-4">
+          Fly With Wallace is a family-owned, FAA-certified flight training provider based at KSYI (Shelbyville, TN), specializing in safe, efficient, and fun private and commercial pilot training. Wallace instructors guide you from discovery flights through advanced ratings, with a focus on mentorship and real-world flying skills.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Private, Instrument, and Commercial Pilot Training</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Accelerated programs and flexible scheduling</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Modern fleet: Cessna 172s & Piper PA-28s</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Personal mentorship and step-by-step guidance</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Discovery flights for all ages—experience flight firsthand</span>
+          </li>
+        </ul>
+        <p class="text-gray-300">
+          With Fly With Wallace, you're not just learning to fly—you're joining a community dedicated to helping you become a safe, confident pilot.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fly With Wayne Block -->
+  <div id="fly-with-wayne" class="py-16 px-6 md:px-12 bg-gray-900/80 rounded-3xl shadow-xl scroll-mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center">
+        <ImageComp
+          imagePath="/src/assets/fly-w-wayne.png"
+          styles="w-auto object-contain h-96"
+        />
+      </div>
+      <div class="text-white">
+        <h3 class="text-3xl font-bold mb-4 text-accent-300">Fly With Wayne</h3>
+        <p class="text-gray-200 mb-4">
+          Fly With Wayne, based in South Florida, provides professional flight instruction focused on making aviation accessible and enjoyable for everyone. Whether you’re starting out or seeking advanced endorsements, Wayne’s patient and supportive teaching style ensures every lesson is fun, thorough, and memorable.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Personalized one-on-one training for beginners & seasoned pilots</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Private pilot, sport pilot, and flight review instruction</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Scenic discovery flights for all ages</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Patient, encouraging, and supportive approach</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="flex-shrink-0 h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-gray-200">Convenient locations across South Florida</span>
+          </li>
+        </ul>
+        <p class="text-gray-300">
+          Take the next step in your aviation adventure with Wayne—your partner for fun, safe, and confidence-building instruction.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<YouTubeSection videos={videosData} videoSectionData={videoSectionData} />
+
+<CTAColor content={CTAFlight} />
+<ContactUs />
+
+</BaseLayout>

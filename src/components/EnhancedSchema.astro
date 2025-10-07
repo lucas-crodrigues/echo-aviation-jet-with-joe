@@ -1,0 +1,394 @@
+---
+import {
+  COMPANY_NAME,
+  PHONE_NUMBER,
+  ADDRESS_LINE_1,
+  ADDRESS_CITY,
+  ADDRESS_STATE,
+  ADDRESS_ZIP,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  YOUTUBE_URL,
+  TIKTOK_URL,
+} from "../consts";
+
+interface Props {
+  pageType?:
+    | "website"
+    | "course"
+    | "location"
+    | "instructorProfile"
+    | "article";
+  courseData?: {
+    name: string;
+    description: string;
+    duration?: string;
+    price?: string;
+    level?: "Beginner" | "Intermediate" | "Advanced";
+    prerequisites?: string[];
+    learningOutcomes?: string[];
+    slug?: string;
+  };
+  locationData?: {
+    name: string;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    phone?: string;
+    latitude?: number;
+    longitude?: number;
+  };
+  instructorData?: {
+    name: string;
+    bio: string;
+    certifications: string[];
+    experience: string;
+    imageUrl?: string;
+    specialties?: string[];
+  };
+  articleData?: {
+    title: string;
+    description: string;
+    author: string;
+    datePublished: string;
+    dateModified?: string;
+    imageUrl?: string;
+    category?: string;
+  };
+  breadcrumbs?: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+const {
+  pageType = "website",
+  courseData,
+  locationData,
+  instructorData,
+  articleData,
+  breadcrumbs = [],
+} = Astro.props;
+
+const siteUrl = "https://echoaviation.training";
+const currentUrl = new URL(Astro.request.url).href;
+
+// Base organization schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "@id": `${siteUrl}/#organization`,
+  name: COMPANY_NAME,
+  alternateName: "Echo Aviation Assets LLC",
+  legalName: "Echo Aviation Assets LLC",
+  description:
+    "Echo Aviation offers accelerated, affordable flight training with a personal touch. Train one-on-one with experienced CFIs through a flexible, independent network. Whether you're starting from zero or advancing your career, our students reach their goals faster and cheaper than traditional schools.",
+  url: siteUrl,
+  logo: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/echo-aviation-logo-white.png`,
+    width: 300,
+    height: 100,
+  },
+  image: `${siteUrl}/echo-aviation-logo-white.png`,
+  telephone: PHONE_NUMBER,
+  foundingDate: "2024",
+  slogan: "Accelerated. Affordable. Independent.",
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Private Pilot License (PPL)",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Instrument Rating (IR)",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Commercial Pilot License (CPL)",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Multi-Engine Rating (MEL)",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Certified Flight Instructor (CFI)",
+      credentialCategory: "certificate",
+    },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: ADDRESS_LINE_1,
+    addressLocality: ADDRESS_CITY,
+    addressRegion: ADDRESS_STATE,
+    postalCode: ADDRESS_ZIP,
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 41.0814,
+    longitude: -81.519,
+  },
+  areaServed: [
+    {
+      "@type": "State",
+      name: "Ohio",
+    },
+    {
+      "@type": "State",
+      name: "Florida",
+    },
+    {
+      "@type": "State",
+      name: "Illinois",
+    },
+    {
+      "@type": "State",
+      name: "Indiana",
+    },
+    {
+      "@type": "State",
+      name: "Washington",
+    },
+  ],
+  department: [
+    {
+      "@type": "EducationalOrganization",
+      name: "Private Pilot Training",
+      description: "Private Pilot License training programs",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Instrument Rating Training",
+      description: "Instrument rating certification programs",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Commercial Pilot Training",
+      description: "Commercial pilot license training programs",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Flight Instructor Training",
+      description: "Certified Flight Instructor training programs",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "25",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  sameAs: [FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL, YOUTUBE_URL, TIKTOK_URL],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: PHONE_NUMBER,
+    contactType: "customer service",
+    availableLanguage: "English",
+    areaServed: "US",
+  },
+};
+
+// Professional Service schema for local SEO
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl}/#service`,
+  name: `${COMPANY_NAME} Flight Training`,
+  description:
+    "Professional flight training services including private pilot, instrument rating, commercial pilot, and flight instructor certifications.",
+  provider: {
+    "@id": `${siteUrl}/#organization`,
+  },
+  areaServed: organizationSchema.areaServed,
+  serviceType: "Flight Training",
+  category: "Aviation Training",
+};
+
+// Website schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: COMPANY_NAME,
+  alternateName: "Echo Aviation Flight Training",
+  url: siteUrl,
+  description:
+    "Accelerated flight training with independent CFIs. Private pilot to commercial pilot training programs nationwide.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+  publisher: {
+    "@id": `${siteUrl}/#organization`,
+  },
+};
+
+// Breadcrumb schema
+const breadcrumbSchema =
+  breadcrumbs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: crumb.name,
+          item: crumb.url,
+        })),
+      }
+    : null;
+
+// Course-specific schema
+const courseSchema = courseData
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: courseData.name,
+      description: courseData.description,
+      provider: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      url: courseData.slug
+        ? `${siteUrl}/training-programs/${courseData.slug}`
+        : currentUrl,
+      courseMode: "blended",
+      educationalLevel: courseData.level || "Beginner",
+      timeRequired: courseData.duration || "P2M",
+      coursePrerequisites: courseData.prerequisites?.join(", "),
+      teaches: courseData.learningOutcomes,
+      offers: courseData.price
+        ? {
+            "@type": "Offer",
+            price: courseData.price.replace(/[^0-9]/g, ""),
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            validFrom: "2024-01-01",
+          }
+        : undefined,
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "blended",
+        instructor: {
+          "@type": "Person",
+          name: "Certified Flight Instructor",
+          jobTitle: "Flight Instructor",
+        },
+      },
+    }
+  : null;
+
+// Location-specific schema
+const locationSchema = locationData
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      name: locationData.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: locationData.address,
+        addressLocality: locationData.city,
+        addressRegion: locationData.state,
+        postalCode: locationData.zipCode,
+        addressCountry: "US",
+      },
+      geo:
+        locationData.latitude && locationData.longitude
+          ? {
+              "@type": "GeoCoordinates",
+              latitude: locationData.latitude,
+              longitude: locationData.longitude,
+            }
+          : undefined,
+      telephone: locationData.phone,
+      containedInPlace: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    }
+  : null;
+
+// Instructor profile schema
+const instructorSchema = instructorData
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: instructorData.name,
+      description: instructorData.bio,
+      jobTitle: "Certified Flight Instructor",
+      worksFor: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      hasCredential: instructorData.certifications?.map((cert) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: cert,
+        credentialCategory: "certificate",
+      })),
+      knowsAbout: instructorData.specialties,
+      image: instructorData.imageUrl
+        ? `${siteUrl}${instructorData.imageUrl}`
+        : undefined,
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "FAA Certified Flight Training",
+      },
+    }
+  : null;
+
+// Article schema
+const articleSchema = articleData
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: articleData.title,
+      description: articleData.description,
+      author: {
+        "@type": "Person",
+        name: articleData.author,
+      },
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      datePublished: articleData.datePublished,
+      dateModified: articleData.dateModified || articleData.datePublished,
+      mainEntityOfPage: currentUrl,
+      image: articleData.imageUrl
+        ? `${siteUrl}${articleData.imageUrl}`
+        : `${siteUrl}/echo-aviation-logo-white.png`,
+      articleSection: articleData.category || "Aviation Training",
+      about: {
+        "@type": "Thing",
+        name: "Flight Training",
+      },
+    }
+  : null;
+
+// Collect all schemas
+const schemas = [
+  organizationSchema,
+  professionalServiceSchema,
+  websiteSchema,
+  breadcrumbSchema,
+  courseSchema,
+  locationSchema,
+  instructorSchema,
+  articleSchema,
+].filter(Boolean);
+---
+
+{
+  schemas.map((schema) => (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schema, null, 2)}
+    />
+  ))
+}

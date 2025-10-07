@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+
+import bento1 from "../assets/uft-commercial-pilot-passed-checkride-on-top-of-cessna-172.webp";
+import bento2 from "../assets/uft-pilot-student-bradenton-solo-in-piper-cherokee-pa-28.webp";
+import bento3 from "../assets/uft-plane-over-islands.webp";
+import bento4 from "../assets/uft-cfi-checkride-pass-sarasota-flight-school.webp";
+import bento5 from "../assets/uft-plane-sunny.webp";
+---
+
+<div class="bg-black py-24 sm:py-32">
+  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="text-base/7 font-semibold text-accent-300">
+      Pilot Training Near You
+    </h2>
+    <p
+      class="mt-2 max-w-lg font-bebas text-4xl font-semibold text-gray-950 sm:text-5xl"
+    >
+      The Flight School for Career Track Pilots and Hobbyists
+    </p>
+    <div
+      class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2"
+    >
+      <div class="relative lg:col-span-3">
+        <div
+          class="absolute inset-px rounded-lg bg-black max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]"
+        >
+        </div>
+        <a
+          href="/pilot-training-guide"
+          target="_blank"
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] ease-in-out duration-300 hover:bg-accent-200"
+        >
+          <Image
+            alt=""
+            src={bento1}
+            alt="Commercial Pilot Passed Checkride Posing On Top Of Cessna 172 Clearwater Florida"
+            class="h-80 object-cover object-center"
+          />
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-accent-300">
+              Accelerated Pilot Training
+            </h3>
+            <p
+              class="font-bebas mt-2 text-3xl/7 font-medium tracking-tight text-gray-950"
+            >
+              Zero to Hero Full Time Airline Training Programs
+            </p>
+            <p class="mt-2 max-w-lg text-base text-gray-600">
+              Get ready for the airlines. Complete your private pilot,
+              instrument rating, commercial pilot, and instructor certificates.
+              Build flight experience and jump start your career in aviation.
+            </p>
+          </div>
+        </a>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]"
+        >
+        </div>
+      </div>
+      <div class="relative lg:col-span-3">
+        <div
+          class="absolute inset-px rounded-lg bg-black max-lg:rounded-t-[2rem] lg:rounded-tr-[2rem]"
+        >
+        </div>
+        <a
+          href="/start-flying"
+          target="_blank"
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tr-[calc(2rem+1px)] ease-in-out duration-300 hover:bg-accent-200"
+        >
+          <Image
+            alt=""
+            src={bento2}
+            alt="Private Pilot Student After Solo First Flight Siesta Key Florida"
+            class="h-80 object-cover object-center"
+          />
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-accent-300">
+              Flexible Schedule
+            </h3>
+            <p
+              class="font-bebas mt-2 text-3xl/7 font-medium tracking-tight text-gray-950"
+            >
+              Fly for Fun Part Time Pilot Training
+            </p>
+            <p class="mt-2 max-w-lg text-base text-gray-600">
+              Train at your own pace. Whether you're looking to learn to fly for
+              fun or you're looking to make a career change to aviation, train
+              as often as your schedule allows.
+            </p>
+          </div>
+        </a>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tr-[2rem]"
+        >
+        </div>
+      </div>
+      <div class="relative lg:col-span-2">
+        <div class="absolute inset-px rounded-lg bg-black lg:rounded-bl-[2rem]">
+        </div>
+        <a
+          href="/discovery-flight"
+          target="_blank"
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] ease-in-out duration-300 hover:bg-accent-200 lg:rounded-bl-[2rem]"
+        >
+          <Image
+            alt=""
+            src={bento3}
+            alt="FLying Over Sarasota Siesta Key Longboat Key Florida in a Cessna 172"
+            class="h-80 object-cover object-center"
+          />
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-accent-300">
+              Discovery Flight
+            </h3>
+            <p
+              class="font-bebas mt-2 text-3xl/7 font-medium tracking-tight text-gray-950"
+            >
+              Your First Flight Lesson
+            </p>
+            <p class="mt-2 max-w-lg text-base text-gray-600">
+              This is your chance to be in the cockpit and fly a plane with your
+              hands at the controls.
+            </p>
+          </div>
+        </a>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-bl-[2rem]"
+        >
+        </div>
+      </div>
+      <div class="relative lg:col-span-2">
+        <div class="absolute inset-px rounded-lg bg-black"></div>
+        <a
+          href="/training-programs/private-pilot-course"
+          target="_blank"
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] ease-in-out duration-300 hover:bg-accent-200"
+        >
+          <Image
+            alt=""
+            src={bento4}
+            alt="CFII CFI Passed Checkride Posing By Cessna 172 Longboat Key"
+            class="h-80 object-cover object-center w-full"
+          />
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-accent-300">
+              Private Pilot
+            </h3>
+            <p
+              class="font-bebas mt-2 text-3xl/7 font-medium tracking-tight text-gray-950"
+            >
+              Ready to jumpstart your pilot career?
+            </p>
+            <p class="mt-2 max-w-lg text-base text-gray-600">
+              Your pilot journey begins here! Enroll in our Private Pilot
+              Program and get ready to soar with confidence. Contact us to start
+              today!
+            </p>
+          </div>
+        </a>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"
+        >
+        </div>
+      </div>
+      <div class="relative lg:col-span-2">
+        <div
+          class="absolute inset-px rounded-lg bg-black max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]"
+        >
+        </div>
+        <a
+          href="/pilot-training-guide"
+          target="_blank"
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] ease-in-out duration-300 hover:bg-accent-200 lg:rounded-br-[2rem]"
+        >
+          <Image
+            alt=""
+            src={bento5}
+            alt="Airbus A320 Boeing 737 airlines airliner taking off and departing runaway"
+            class="h-80 object-cover object-center"
+          />
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-accent-300">Services</h3>
+            <p
+              class="font-bebas mt-2 text-3xl/7 font-medium tracking-tight text-gray-950"
+            >
+              Aircraft Maintenance Program
+            </p>
+            <p class="mt-2 max-w-lg text-base text-gray-600">
+              Ensure your aircraft’s safety and performance—book your
+              maintenance service with us today!
+            </p>
+          </div>
+        </a>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-br-[2rem]"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

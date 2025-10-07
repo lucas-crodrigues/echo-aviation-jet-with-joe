@@ -1,0 +1,20 @@
+---
+// WhatsIncluded.astro
+const { title, items } = Astro.props;
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6 max-w-4xl text-center">
+    <h2 class="text-3xl font-bold mb-6">{title}</h2>
+    <ul class="grid md:grid-cols-2 gap-6 text-lg text-left">
+      {items.map((item) => (
+        <li class="flex items-center justify-center space-x-4">
+          <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M16.707 5.293a1 1 0 00-1.414-1.414l-7.586 7.586-3.293-3.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+          </svg>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

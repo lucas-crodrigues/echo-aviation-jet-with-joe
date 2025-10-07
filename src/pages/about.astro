@@ -1,0 +1,23 @@
+---
+import IndexLayout from "../layouts/IndexLayout.astro";
+import HeaderScreen from "../components/HeaderScreen.astro";
+import AboutUs from "../components/AboutUs.astro";
+import ContactUs from "../components/ContactUs.astro";
+
+const siteTitle =
+  "About Us | Echo Aviation";
+
+const header = {
+  imagePath: "/src/assets/stock-john-torcasio-AZETMRayI18-unsplash.jpg",
+  headerH1: "About Echo Aviation",
+  paragraph: "Experience the freedom of flight with Echo Aviation's personalized and accelerated training programs.",
+};
+
+---
+
+<IndexLayout siteTitle={siteTitle} >
+  <HeaderScreen content={header} />
+  <AboutUs />
+  <div id="form" class="scroll-my-20"></div>
+  <ContactUs />
+</IndexLayout>

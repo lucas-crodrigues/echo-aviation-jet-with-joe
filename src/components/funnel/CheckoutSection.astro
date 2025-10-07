@@ -1,0 +1,43 @@
+---
+import ImageComp from "../ImageComp.astro";
+const { heading, paragraph, supportText, iframeSrc, imagePath } = Astro.props;
+---
+
+<section id="checkout" class="relative py-20 text-center overflow-hidden">
+  <!-- Background image -->
+  <ImageComp
+    imagePath={imagePath}
+    styles="absolute inset-0 w-full h-full object-cover z-0"
+  />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-white/50 backdrop-blur-sm z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 container mx-auto px-6 max-w-xl">
+    <h2 class="text-4xl font-bold mb-4">{heading}</h2>
+    <p class="mb-6 text-lg text-gray-700">{paragraph}</p>
+
+    <iframe
+      src={iframeSrc}
+      style="width:100%;height:100%;border:none;border-radius:3px"
+      id="inline-checkout-form"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="Echo Payment Form"
+      data-height="1328"
+      data-layout-iframe-id="inline-checkout-form"
+      data-form-id="5hMnT4BShE0MFNe2Dk6y"
+      title="Echo Payment Form"
+    ></iframe>
+
+    <script src="https://msg.flightschoolcrm.com/js/form_embed.js"></script>
+
+    <p class="text-sm mt-4 text-gray-500">{supportText}</p>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import TypewriterText from "../components/TypewriterText.jsx";
+
+const { data } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif,webp}",
+);
+if (!images[data.imagePath]) {
+  throw new Error(
+    `"${data.imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`,
+  );
+}
+---
+
+<section
+  class="relative min-h-[90vh] overflow-hidden flex items-center justify-center md:justify-start py-4 md:py-16 md:px-8 m-0"
+  aria-label="Echo Aviation - Nationwide Flight Training"
+>
+  {
+    data.imagePath && (
+      <div class="absolute -z-30 inset-0" aria-hidden="true">
+        <Image
+          alt=""
+          src={images[data.imagePath]()}
+          width={2440}
+          fetchpriority="high"
+          class="object-cover h-full w-full object-left-30 lg:object-center contrast-125 opacity-30"
+        />
+      </div>
+    )
+  }
+
+  <div class="absolute h-full w-full -z-20 inset-0" aria-hidden="true"></div>
+  <div
+    class="flex flex-col justify-center px-4 md:pr-24 text-accent-100 text-center md:items-start md:justify-end md:text-left max-w-4xl h-full"
+  >
+    <p
+      class="text-4xl uppercase text-accent-100 font-sans2 md:text-7xl lg:text-8xl font-medium tracking-wide drop-shadow-md pt-12"
+    >
+      <TypewriterText words={data.catch} client:visible />
+    </p>
+
+    <h1
+      class="text-xl lg:text-4xl max-w-3xl mt-3 text-accent-100 font-semibold tracking-wide drop-shadow-md"
+      set:html={data.title}
+      data-aos="fade-right"
+    />
+
+    <div class="pt-16 w-full flex justify-start items-center gap-8 md:gap-16">
+      {
+        data.buttons.map((button) => (
+          <a href={button.link} class="btn-accent" set:html={button.text} />
+        ))
+      }
+    </div>
+  </div>
+</section>

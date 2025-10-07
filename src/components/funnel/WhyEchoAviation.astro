@@ -1,0 +1,27 @@
+---
+// WhyEchoAviation.astro
+import ImageComp from "../ImageComp.astro";
+const { title, paragraph1, paragraph2, buttonText, buttonLink, imagePath } = Astro.props;
+---
+
+<section class="py-16 text-gray-100 bg-checkered bg-fixed">
+  <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center gap-10">
+    <!-- Left: Text Content -->
+    <div class="w-full md:w-1/2">
+      <h2 class="text-3xl font-bold mb-6 text-center md:text-left">{title}</h2>
+      <p class="text-lg text-center md:text-left mb-4">{paragraph1}</p>
+      <p class="text-lg text-center md:text-left">{paragraph2}</p>
+      <div class="pt-8">
+        <a href={buttonLink} class="btn-primary">{buttonText}</a>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="w-full md:w-1/2">
+      <ImageComp
+        imagePath={imagePath}
+        styles="w-full h-auto rounded shadow-lg"
+      />
+    </div>
+  </div>
+</section>

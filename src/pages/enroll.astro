@@ -1,0 +1,32 @@
+---
+import EnrollComponent from "../components/Enroll.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Location from "../components/Location.astro";
+import HeaderSmall from "../components/HeaderSmall.astro";
+import CTAColor from "../components/CTAColor.astro";
+import CTAFlight from "../data/CTAFlight.js";
+
+const header = {
+  imagePath: "/src/assets/stock-enroll-echo-aviation-affordable-independent.jpg",
+  headerH1: "Enroll at </br>Echo Aviation",
+  paragraph:
+    "Start your journey with Echo Aviation. Whether you're working toward a career in aviation or pursuing a personal goal, our team is here to help you enroll in the right program and take flight.",
+  buttons: [
+    {
+      name: "Start Enrollment",
+      link: "#contact",
+      primary: false,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  siteTitle="Enroll Now | Echo Aviation"
+>
+  <HeaderSmall content={header} />
+
+  <EnrollComponent />
+
+  <CTAColor content={CTAFlight} />
+</BaseLayout>

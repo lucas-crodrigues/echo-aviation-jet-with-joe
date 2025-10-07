@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import HeaderScreen from "../../../components/HeaderScreen.astro";
+import CTAColor from "../../../components/CTAColor.astro";
+import CTAFlight from "../../../data/CTAFlight.js";
+import PageSummary from "../../../components/PageSummary.astro";
+import programs from "../../../data/programsSlugAkron";
+import { COMPANY_NAME } from "../../../consts";
+import ProgramDetails from "../../../components/ProgramDetails.astro";
+import EnrollComponent from "../../../components/Enroll.astro";
+import EnhancedSchema from "../../../components/EnhancedSchema.astro";
+import FAQSchema from "../../../components/FAQSchema.astro";
+
+export function getStaticPaths() {
+  return programs.map(({ data }) => {
+    return {
+      params: { slug: data.slug },
+      props: {
+        data,
+      },
+    };
+  });
+}
+
+const { data } = Astro.props;
+
+// Prepare course data for enhanced schema
+const courseData = {
+  name:
+    data.pageSummary?.title?.replace(/<br>|\<.*?\>/g, " ").trim() ||
+    data.pageTitle,
+  description: data.pageDescription,
+  slug: data.slug,
+  level: "Beginner" as const, // Properly typed
+  duration: data.details?.duration || "P2M", // Default 2 months
+  price: data.details?.estimatedCost,
+  prerequisites: data.details?.prerequisites || [],
+  learningOutcomes: data.details?.keyPoints || [],
+};
+
+// Generate breadcrumbs
+const breadcrumbs = [
+  { name: "Home", url: "https://echoaviation.training/" },
+  {
+    name: "Training Programs",
+    url: "https://echoaviation.training/training-programs/",
+  },
+  {
+    name: courseData.name,
+    url: `https://echoaviation.training/training-programs/${data.slug}`,
+  },
+];
+---
+
+<BaseLayout
+  siteTitle={data.pageTitle}
+>
+  <!-- Enhanced Course Schema -->
+  <EnhancedSchema
+    pageType="course"
+    courseData={courseData}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- FAQ Schema for Program-Specific FAQs -->
+  {
+    data.details?.faqs && data.details.faqs.length > 0 && (
+      <FAQSchema items={data.details.faqs} />
+    )
+  }
+
+  <!-- HEADER -->
+  <HeaderScreen content={data.header} />
+  <PageSummary content={data.pageSummary} />
+  <ProgramDetails program={data.details} />
+  <!-- <ProgramSwiper content={programsSwiper} /> -->
+  <CTAColor content={CTAFlight} />
+  <EnrollComponent />
+</BaseLayout>

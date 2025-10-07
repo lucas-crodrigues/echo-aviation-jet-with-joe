@@ -1,0 +1,111 @@
+---
+import FunnelLayout from "../layouts/FunnelLayout.astro"
+---
+
+<FunnelLayout
+  siteTitle="Start Flying"
+>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-900 to-blue-600 text-white text-center">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl font-bold mb-4">Get 33 Hours of 1-on-1 Flight Instruction for Just $1,500</h1>
+        <p class="text-xl mb-6">Train toward your Private, Instrument, or any certificate — your CFI, your schedule, your path.</p>
+        <a href="#checkout" class="inline-block bg-white text-blue-900 font-bold px-8 py-3 rounded-lg shadow-md hover:bg-gray-200 transition">Enroll Now</a>
+        <p class="mt-4 text-sm italic">Normally $2,500 — Save $1,000 for a limited time</p>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">How It Works</h2>
+        <ol class="space-y-6 text-lg list-decimal list-inside">
+          <li>Reserve your spot with a $1,500 one-time payment.</li>
+          <li>We’ll match you with a Certified Flight Instructor in your area.</li>
+          <li>You get 33 hours of training — toward any license or goal you choose.</li>
+          <li>Keep going with your instructor or transition into one of our structured programs.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h2 class="text-3xl font-bold mb-6">What You Get</h2>
+        <ul class="grid md:grid-cols-2 gap-6 text-lg text-left">
+          <li>✔️ 33 hours of personalized instruction with a dedicated CFI</li>
+          <li>✔️ Choose your focus: Private, Instrument, Commercial, or refreshers</li>
+          <li>✔️ No long-term commitment — you control the schedule</li>
+          <li>✔️ Eligible for accelerated program entry after hours are used</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Why Echo Aviation -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">Why This Works</h2>
+        <p class="text-lg text-center max-w-3xl mx-auto">Most flight schools lock you into their schedule and pricing. At Echo Aviation, you work with a local, independent CFI who tailors your training around your time, your goals, and your pace. It’s flexible. It’s personal. It’s the way flight training should be.</p>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h2 class="text-3xl font-bold mb-6">What Students Are Saying</h2>
+        <!-- Add real testimonials here or embed video -->
+        <p class="italic text-lg">“This let me finally start flying on *my* time without waiting months on a school.”</p>
+        <p class="text-sm mt-2">— M. R., Phoenix, AZ</p>
+      </div>
+    </section>
+
+    <!-- Countdown / Scarcity -->
+    <section class="py-10 bg-red-100 text-center">
+      <p class="text-xl font-bold text-red-800">Only 15 discounted slots remaining!</p>
+      <p class="text-sm text-red-700">This $1,500 offer expires soon — reserve your instructor while spots last.</p>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="py-20 bg-white text-center">
+      <div class="container mx-auto px-6 max-w-xl">
+        <h2 class="text-3xl font-bold mb-4">Claim Your 33 Hours</h2>
+        <p class="mb-6 text-lg">One-time payment of $1,500. No hidden fees. No monthly billing.</p>
+        <!-- Replace with actual checkout form or Stripe integration -->
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded transition">
+          Proceed to Payment
+        </button>
+        <p class="text-sm mt-4 text-gray-600">Need help? Call us at (330) 993-4243</p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6 text-left">
+          <div>
+            <h3 class="font-bold">Can I use the 33 hours toward any rating?</h3>
+            <p>Yes — Private Pilot, Instrument, Commercial, or just brushing up. It’s your choice.</p>
+          </div>
+          <div>
+            <h3 class="font-bold">Is aircraft rental included?</h3>
+            <p>No, this package is for instruction time only. You’ll coordinate aircraft rental directly with your instructor or local FBO.</p>
+          </div>
+          <div>
+            <h3 class="font-bold">What if I need more than 33 hours?</h3>
+            <p>You can continue directly with your CFI at your own pace, or enroll in a structured Echo program later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-blue-900 text-white text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Take Off?</h2>
+      <p class="mb-6 text-lg">Your first 33 hours of flight instruction are just $1,500 — and just one click away.</p>
+      <a href="#checkout" class="bg-white text-blue-900 font-bold px-8 py-3 rounded shadow-lg hover:bg-gray-200 transition">
+        Lock In Your Spot
+      </a>
+    </section>
+</FunnelLayout>
+

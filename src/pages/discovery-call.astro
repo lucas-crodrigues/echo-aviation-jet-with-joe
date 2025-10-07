@@ -1,0 +1,34 @@
+---
+import Discovery from "../components/Discovery.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Location from "../components/Location.astro";
+import HeaderSmall from "../components/HeaderSmall.astro";
+import CTAFinancing from "../components/CTAFinancing.astro";
+import financingCompData from "../data/financingComp";
+import DiscoverySessions from "../components/DiscoverySessions.astro";
+
+const header = {
+  imagePath: "/src/assets/stock-discovery-call-echo-aviation-affordable-independent.jpg",
+  headerH1: "Join a</br>Discovery Session",
+  paragraph:
+    "Have questions about our training programs, pricing, or how Echo Aviation works? Join a live Discovery Session held every Friday. Fill out the form below and we’ll send you a private call link where you can ask questions and learn how to start flight training with an independent CFI near you.",
+  buttons: [
+    {
+      name: "Reserve Your Spot",
+      link: "#contact",
+      primary: false,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  siteTitle="Weekly Discovery Sessions | Echo Aviation"
+>
+  <HeaderSmall content={header} />
+
+  <Discovery />
+  <DiscoverySessions />
+  <CTAFinancing content={financingCompData} />
+
+</BaseLayout>

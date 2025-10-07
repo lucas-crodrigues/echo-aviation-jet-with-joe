@@ -1,0 +1,76 @@
+---
+import IndexLayout from "../layouts/IndexLayout.astro";
+import HeaderScreen from "../components/HeaderScreen.astro";
+import WhyPilot from "../components/WhyPilot.astro";
+import Features from "../components/Features.astro";
+
+const siteTitle =
+  "Why Become a Pilot? | Echo Aviation";
+
+const header = {
+  imagePath: "/src/assets/stock-david-s-LDm9u2enYmo-unsplash.jpg",
+  headerH1: "Why Become a Pilot?",
+  paragraph: "Experience the freedom of flight with Echo Aviation's personalized and accelerated training programs.",
+};
+
+const whyPilot = {
+  upperHeading: "Discover the Skies",
+  heading: "Why Choose a Career in Aviation?",
+  description: [
+    "Becoming a pilot opens up a world of freedom, adventure, and career opportunities that few other professions can match. With Echo Aviation's accelerated training, you can earn your wings faster and more affordably, whether you're aiming for a career or a lifelong hobby.",
+    "Learn more about how Echo Aviation can make your aviation dreams a reality by exploring our programs and flexible training options."
+  ],
+  buttonText: "Explore Programs",
+  buttonLink: "/training-programs",
+  reasons: [
+    {
+      title: "Unmatched Freedom & Flexibility",
+      description:
+        "With Echo Aviation's independent CFIs, you can train where you want, when you want. Experience the thrill of cross-country flights, explore diverse airspace, and fly to locations that most flight schools don't offer. No more waiting for training slots—you control the schedule.",
+    },
+    {
+      title: "Career Opportunities",
+      description:
+        "The demand for pilots is growing, and Echo Aviation positions you for success with accelerated training. From Private Pilot to Commercial Pilot and beyond, our programs are designed to get you certified faster. Our partnership with Stratus Financial also helps you fund your training with manageable payment options.",
+    },
+    {
+      title: "Accelerated Path to Certification",
+      description:
+        "With Echo Aviation's streamlined path, you can achieve your Private Pilot, Instrument Rating, and Commercial Pilot License in as little as 5.5 months. Our independent CFIs work exclusively with a maximum of three students at a time, giving you personalized attention and a fast track to your aviation career.",
+    },
+  ],
+};
+
+const features = {
+  upperHeading: "Why Choose Echo Aviation?",
+  heading: "The Echo Aviation Difference",
+  headingText:
+    "Echo Aviation redefines flight training with an independent, flexible model that puts you in control. Train faster, pay less, and fly more.",
+  card1: {
+    title: "Independent CFIs",
+    description:
+      "Our flight instructors are independent, not tied to crowded flight schools. This means more personalized attention, less waiting, and a truly flexible schedule.",
+  },
+  card2: {
+    title: "Cross-Country Experience",
+    description:
+      "Echo Aviation students don't just circle the airport. You'll build real cross-country hours, flying to new airports and mastering complex airspace.",
+  },
+  card3: {
+    title: "Nationwide Training Locations",
+    description:
+      "From Akron to Fort Myers and beyond, our CFIs bring the training to you. Learn to fly in diverse airspaces, not just one location.",
+  },
+  card4: {
+    title: "Accelerated Programs",
+    description:
+      "Our Zero to Hero path lets you complete PPL, IR, and CPL in as little as 5.5 months. Save time, save money, and start flying sooner.",
+  },
+};
+---
+
+<IndexLayout siteTitle={siteTitle} >
+  <HeaderScreen content={header} />
+  <WhyPilot content={whyPilot} />
+  <Features content={features} />
+</IndexLayout>
